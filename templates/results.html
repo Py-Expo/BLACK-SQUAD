@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipes containing {{ ingredient }}</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding: 20px;
+            background-color: #f8f9fa; /* Light gray background color */
+            color: #333; /* Dark text color */
+            font-family: Arial, sans-serif; /* Font style */
+        }
+        .recipe-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .recipe-card {
+            margin-bottom: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .recipe-card h2 {
+            margin-top: 0;
+            font-size: 24px;
+            color: #007bff; /* Blue heading color */
+            font-family: 'Arial Black', sans-serif; /* Heading font style */
+        }
+        .recipe-card p {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        .recipe-card p.ingredients {
+            font-weight: bold;
+            color: #28a745; /* Green ingredients color */
+        }
+        .recipe-card p.instructions {
+            color: #6c757d; /* Gray instructions color */
+        }
+    </style>
+</head>
+<body>
+    <div class="container recipe-container">
+        <h1 class="text-center">Recipes containing {{ ingredient }}</h1>
+        {% for recipe_name, recipe_details in recipes.items() %}
+        <div class="recipe-card">
+            <h2>{{ recipe_name }}</h2>
+            <p class="ingredients"><strong>Ingredients:</strong> {{ ', '.join(recipe_details['ingredients']) }}</p>
+            <p class="instructions"><strong>Instructions:</strong> {{ recipe_details['instructions'] }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
+
+
